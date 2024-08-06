@@ -52,7 +52,7 @@ function download() {
     local _url="${base_url}/${version}/amazon-corretto-${version}-${os}-${arch}${_suffix}.${_ext}"
     
     log "Downloading '${_url}'"
-    wget --output-document="${dst_root}/corretto-${os}-${arch}.${_ext}" "${_url}"
+    wget --quiet --output-document="${dst_root}/corretto-${os}-${arch}.${_ext}" "${_url}"
 
 }
 
