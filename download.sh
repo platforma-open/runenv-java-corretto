@@ -76,8 +76,8 @@ function unpack_linux() {
     rm -rf "${dst_data_dir}"
     mkdir "${dst_data_dir}"
 
-    tar -x -z \
-        --cd "${dst_data_dir}" \
+    tar -x \
+        -C "${dst_data_dir}" \
         --file "${dst_root}/corretto-${os}-${arch}.tar.gz" \
         --strip-components 1 \
         "amazon-corretto-${version}-${os}-${arch}"
@@ -90,8 +90,7 @@ function unpack_osx() {
     mkdir "${dst_data_dir}"
 
     tar -x \
-        --uncompress \
-        --cd "${dst_data_dir}" \
+        -C "${dst_data_dir}" \
         --file "${dst_root}/corretto-${os}-${arch}.tar.gz" \
         --strip-components 3 \
         "amazon-corretto-21.jdk/Contents/Home/"
