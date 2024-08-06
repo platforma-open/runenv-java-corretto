@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
+    "build": "true",
+
     "download:linux-x64": "./download.sh linux x64",
     "build:linux-x64": "pl-pkg build package --os='linux' --arch='x64' --content-root='dld/corretto-linux-x64'",
     "publish:linux-x64": "pl-pkg publish package --os='linux' --arch='x64'",
