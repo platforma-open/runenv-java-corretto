@@ -1,0 +1,7 @@
+/node_modules/
+/dist/
+/dld/
+/*.tgz
+/*.tar.gz
+/*.zip
+/java/
