@@ -1,5 +1,5 @@
 {
-  "name": "@milaboratory/sw-java-corretto",
+  "name": "@milaboratory/runenv-java-corretto",
   "version": "0.0.1",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
