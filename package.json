@@ -1,6 +1,6 @@
 {
   "name": "@milaboratory/runenv-java-corretto",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
     "build": "true",
