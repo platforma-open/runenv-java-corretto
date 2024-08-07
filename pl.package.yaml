@@ -1,7 +1,7 @@
 binary:
   registry:
     name: "milaboratories"
-    publishURL: s3://milab-euce1-prod-pkgs-s3-platforma-registry/pub/common/?region=eu-central-1
+    storageURL: s3://milab-euce1-prod-pkgs-s3-platforma-registry/pub/common/?region=eu-central-1
 
   name: "corretto"
   version: "21.0.2.13.1"
