@@ -4,18 +4,17 @@ set -o errexit
 set -o nounset
 
 #
-# Script settings
+# Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
 cd "${script_dir}"
 
 base_url="https://corretto.aws/downloads/resources"
-version="21.0.2.13.1"
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3 ]; then
     echo ""
-    echo "Usage: '${0}' <os> <arch>"
-    echo "       '${0}' linux x64"
+    echo "Usage: '${0}' <version> <os> <arch>"
+    echo "       '${0}' 21.0.2.13.1 linux x64"
     echo ""
     echo "  OS list:"
     echo "    linux"
@@ -32,10 +31,18 @@ fi
 #
 # Script parameters
 #
-os="${1}"
-arch="${2}"
-dst_root="${script_dir}/dld"
-dst_data_dir="${dst_root}/corretto-${os}-${arch}"
+version="${1}"
+os="${2}"
+arch="${3}"
+dst_root="${script_dir}/../../dld"
+dst_data_dir="${dst_root}/corretto-${version}-${os}-${arch}"
+
+dst_archive_ext="tar.gz"
+if [ "${os}" == "windows" ]; then
+    dst_archive_ext="zip"
+fi
+# Dirty change of the 'global' state from inside the function
+dst_archive_path="${dst_root}/corretto-${version}-${os}-${arch}.${dst_archive_ext}"
 
 function log() {
     printf "%s\n" "${*}"
@@ -50,10 +57,9 @@ function download() {
     fi
 
     local _url="${base_url}/${version}/amazon-corretto-${version}-${os}-${arch}${_suffix}.${_ext}"
-    
-    log "Downloading '${_url}'"
-    wget --quiet --output-document="${dst_root}/corretto-${os}-${arch}.${_ext}" "${_url}"
 
+    log "Downloading '${_url}'"
+    wget --quiet --output-document="${dst_archive_path}" "${_url}"
 }
 
 function unpack() {
@@ -71,40 +77,44 @@ function unpack() {
 }
 
 function unpack_linux() {
-    log "Unpacking archive for linux"
+    log "Unpacking archive for linux to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
     mkdir "${dst_data_dir}"
 
     tar -x \
         -C "${dst_data_dir}" \
-        --file "${dst_root}/corretto-${os}-${arch}.tar.gz" \
+        --file "${dst_archive_path}" \
         --strip-components 1 \
         "amazon-corretto-${version}-${os}-${arch}"
 }
 
 function unpack_osx() {
-    log "Unpacking archive for osx"
+    log "Unpacking archive for osx to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
     mkdir "${dst_data_dir}"
 
     tar -x \
         -C "${dst_data_dir}" \
-        --file "${dst_root}/corretto-${os}-${arch}.tar.gz" \
+        --file "${dst_archive_path}" \
         --strip-components 3 \
         "amazon-corretto-21.jdk/Contents/Home/"
 }
 
 function unpack_windows() {
-    log "Unpacking archive for windows"
+    log "Unpacking archive for windows to '${dst_data_dir}'"
+
+    local _dir_name="${version%.*}" # 21.0.4.7.1 -> 21.0.4.7
+    _dir_name="${_dir_name%.*}_${_dir_name##*.}" # 21.0.4.7 -> 21.0.4_7
+    _dir_name="jdk${_dir_name}" # 21.0.4_7 -> jdk21.0.4_7
     
     unzip \
-        "${dst_root}/corretto-${os}-${arch}.zip" \
-        "jdk21.0.2_13/*"
+        "${dst_archive_path}" \
+        "${_dir_name}/*"
 
     rm -rf "${dst_data_dir}"
-    mv jdk21.0.2_13/ "${dst_data_dir}"
+    mv "${_dir_name}/" "${dst_data_dir}"
 }
 
 mkdir -p "${dst_root}"

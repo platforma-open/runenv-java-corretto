@@ -1,10 +1,10 @@
-binary:
+environment:
+  type: 'java'
   registry:
     name: "milaboratories"
     storageURL: s3://milab-euce1-prod-pkgs-s3-platforma-registry/pub/common/?region=eu-central-1
 
-  name: "corretto"
-  version: "21.0.2.13.1"
- 
+  name: "common/corretto"
+
   root: "./java"
-  entrypoint: [ "bin/java" ]
+  entrypoint: ["bin/java", "-jar"]
