@@ -1,12 +1,10 @@
 {
   "name": "@milaboratory/runenv-java-corretto",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
     "build": "true",
-
     "pkg:build": "./scripts/build.sh",
-
     "release:packages": "./scripts/publish.sh 21.0.2.13.1",
     "release:descriptors": "pl-pkg publish descriptor",
     "release": "npm run release:packages && npm run release:descriptors"
@@ -15,8 +13,7 @@
     "dist/"
   ],
   "license": "UNLICENSED",
-  "dependencies": {},
   "devDependencies": {
-    "@milaboratory/pl-package-builder": "1.7.x"
+    "@milaboratory/pl-package-builder": "^1.8.0"
   }
 }

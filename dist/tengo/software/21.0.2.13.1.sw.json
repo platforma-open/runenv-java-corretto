@@ -1,1 +1,1 @@
-{"runEnv":{"type":"java","registry":"milaboratories","package":"common/corretto/21.0.2.13.1-{os}-{arch}.tgz","entrypoint":["bin/java","-jar"]}}
+{"name":"@milaboratory/runenv-java-corretto:21.0.2.13.1","runEnv":{"type":"java","registry":"milaboratories","package":"common/corretto/21.0.2.13.1-{os}-{arch}.tgz","entrypoint":["bin/java","-jar"]}}
