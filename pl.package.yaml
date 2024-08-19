@@ -7,4 +7,4 @@ environment:
   name: "common/corretto"
 
   root: "./java"
-  entrypoint: ["bin/java", "-jar"]
+  binDir: "bin"
