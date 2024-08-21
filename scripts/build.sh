@@ -22,12 +22,11 @@ fi
 #
 version="${1}"
 
-pl-pkg build descriptor \
-    --name="${version}" \
-    --version="${version}"
+pl-pkg build descriptors \
+    --package-id="${version}"
 
+./21.x/pkg-build.sh "${version}" macosx x64
+./21.x/pkg-build.sh "${version}" macosx aarch64
 ./21.x/pkg-build.sh "${version}" linux x64
 ./21.x/pkg-build.sh "${version}" linux aarch64
 ./21.x/pkg-build.sh "${version}" windows x64
-./21.x/pkg-build.sh "${version}" macosx x64
-./21.x/pkg-build.sh "${version}" macosx aarch64

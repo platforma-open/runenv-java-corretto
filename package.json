@@ -1,19 +1,38 @@
 {
   "name": "@milaboratory/runenv-java-corretto",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
     "build": "true",
     "pkg:build": "./scripts/build.sh",
     "release:packages": "./scripts/publish.sh 21.0.2.13.1",
-    "release:descriptors": "pl-pkg publish descriptor",
+    "release:descriptors": "pl-pkg publish descriptors",
     "release": "npm run release:packages && npm run release:descriptors"
   },
   "files": [
     "dist/"
   ],
+  "block-software": {
+    "registries": {
+      "binary": {
+        "milaboratories": { "storageURL": "s3://milab-euce1-prod-pkgs-s3-platforma-registry/pub/?region=eu-central-1" }
+      }
+    },
+    "packages": {
+      "21.0.2.13.1": {
+          "environment": {
+            "type": "java",
+            "registry": { "name": "milaboratories" },
+            "entrypointName": "21.0.2.13.1",
+            "version": "21.0.2.13.1",
+            "root": "./java",
+            "binDir": "bin"
+          }
+      }
+    }
+  },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@milaboratory/pl-package-builder": "^1.8.1"
+    "@milaboratory/pl-package-builder": "^2.4.3"
   }
 }

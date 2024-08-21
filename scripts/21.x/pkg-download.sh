@@ -34,7 +34,7 @@ fi
 version="${1}"
 os="${2}"
 arch="${3}"
-dst_root="${script_dir}/../../dld"
+dst_root="$(cd "${script_dir}/../../"; pwd)/dld"
 dst_data_dir="${dst_root}/corretto-${version}-${os}-${arch}"
 
 dst_archive_ext="tar.gz"

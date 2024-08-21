@@ -33,7 +33,7 @@ version="${1}"
 os="${2}"
 arch="${3}"
 
-pl-pkg publish package \
-    --version="${version}" \
+pl-pkg publish packages \
+    --package-id="${version}" \
     --os="${os}" \
     --arch="${arch}"
