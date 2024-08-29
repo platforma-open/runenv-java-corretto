@@ -7,7 +7,7 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
+cd "${script_dir}/../../"
 
 base_url="https://corretto.aws/downloads/resources"
 
@@ -34,7 +34,7 @@ fi
 version="${1}"
 os="${2}"
 arch="${3}"
-dst_root="$(cd "${script_dir}/../../"; pwd)/dld"
+dst_root="dld"
 dst_data_dir="${dst_root}/corretto-${version}-${os}-${arch}"
 
 dst_archive_ext="tar.gz"
@@ -58,8 +58,13 @@ function download() {
 
     local _url="${base_url}/${version}/amazon-corretto-${version}-${os}-${arch}${_suffix}.${_ext}"
 
+    local _show_progress=("--show-progress")
+    if [ "${CI:-}" = "true" ]; then
+        _show_progress=()
+    fi
+
     log "Downloading '${_url}'"
-    wget --quiet --output-document="${dst_archive_path}" "${_url}"
+    wget --quiet "${_show_progress[@]}" --output-document="${dst_archive_path}" "${_url}"
 }
 
 function unpack() {
@@ -77,7 +82,7 @@ function unpack() {
 }
 
 function unpack_linux() {
-    log "Unpacking archive for linux to '${dst_data_dir}'"
+    log "Unpacking archive for Linux to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
     mkdir "${dst_data_dir}"
@@ -90,7 +95,7 @@ function unpack_linux() {
 }
 
 function unpack_osx() {
-    log "Unpacking archive for osx to '${dst_data_dir}'"
+    log "Unpacking archive for Mac OS X to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
     mkdir "${dst_data_dir}"
@@ -103,7 +108,7 @@ function unpack_osx() {
 }
 
 function unpack_windows() {
-    log "Unpacking archive for windows to '${dst_data_dir}'"
+    log "Unpacking archive for Windows to '${dst_data_dir}'"
 
     local _dir_name="${version%.*}" # 21.0.4.7.1 -> 21.0.4.7
     _dir_name="${_dir_name%.*}_${_dir_name##*.}" # 21.0.4.7 -> 21.0.4_7

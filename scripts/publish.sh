@@ -33,17 +33,6 @@ if ! [ -f "../dist/tengo/software/${version}.sw.json" ]; then
     exit 1
 fi
 
-./21.x/pkg-build.sh "${version}" linux x64
-./21.x/pkg-publish.sh "${version}" linux x64
-
-./21.x/pkg-build.sh "${version}" linux aarch64
-./21.x/pkg-publish.sh "${version}" linux aarch64
-
-./21.x/pkg-build.sh "${version}" windows x64
-./21.x/pkg-publish.sh "${version}" windows x64
-
-./21.x/pkg-build.sh "${version}" macosx x64
-./21.x/pkg-publish.sh "${version}" macosx x64
-
-./21.x/pkg-build.sh "${version}" macosx aarch64
-./21.x/pkg-publish.sh "${version}" macosx aarch64
+pl-pkg publish packages \
+    --package-id="${version}" \
+    --all-platforms

@@ -35,5 +35,4 @@ arch="${3}"
 
 pl-pkg publish packages \
     --package-id="${version}" \
-    --os="${os}" \
-    --arch="${arch}"
+    --platform="${os}-${arch}"

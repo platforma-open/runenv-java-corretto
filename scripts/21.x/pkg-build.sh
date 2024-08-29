@@ -36,6 +36,4 @@ arch="${3}"
 ./pkg-download.sh "${version}" "${os}" "${arch}"
 pl-pkg build packages \
     --package-id="${version}" \
-    --os="${os}" \
-    --arch="${arch}" \
-    --content-root="../../dld/corretto-${version}-${os}-${arch}"
+    --platform="${os}-${arch}"
