@@ -35,4 +35,5 @@ fi
 
 pl-pkg publish packages \
     --package-id="${version}" \
+    --force \
     --all-platforms
