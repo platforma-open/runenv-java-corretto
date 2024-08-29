@@ -35,5 +35,5 @@ fi
 
 pl-pkg publish packages \
     --package-id="${version}" \
-    --force \
+    --skip-existing-packages \
     --all-platforms
