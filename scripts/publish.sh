@@ -33,7 +33,12 @@ if ! [ -f "../dist/tengo/software/${version}.sw.json" ]; then
     exit 1
 fi
 
+pl-pkg sign packages \
+    --package-id="${version}" \
+    --all-platforms \
+    --sign-command='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
+
 pl-pkg publish packages \
     --package-id="${version}" \
-    --skip-existing-packages \
+    --force \
     --all-platforms
