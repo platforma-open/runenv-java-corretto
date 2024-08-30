@@ -39,6 +39,6 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@milaboratory/pl-package-builder": "^2.6.1"
+    "@milaboratory/pl-package-builder": "^2.6.4"
   }
 }
