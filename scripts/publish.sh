@@ -36,7 +36,7 @@ fi
 pl-pkg sign packages \
     --package-id="${version}" \
     --all-platforms \
-    --sign-command='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
+    --sign-util='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
 
 pl-pkg publish packages \
     --package-id="${version}" \
