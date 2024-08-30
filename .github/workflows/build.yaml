@@ -12,7 +12,7 @@ jobs:
   init:
     runs-on: ubuntu-latest
     steps:
-      - uses: milaboratory/github-ci/actions/context/init@v4
+      - uses: milaboratory/github-ci/actions/context/init@v4-beta
         with:
           version-canonize: false
           branch-versioning: main
@@ -20,7 +20,7 @@ jobs:
     needs:
       - init
 
-    uses: milaboratory/github-ci-internal/.github/workflows/node-simple.yaml@v4
+    uses: milaboratory/github-ci-internal/.github/workflows/node-simple.yaml@v4-beta
     with:
       app-name: Amazon Corretto JAVA PL package
       app-name-slug: 'corretto-jdk'
@@ -38,6 +38,7 @@ jobs:
       publish-script-name: 'release'
 
       aws-publish-enable: true
+      gcloud-kms-sign-enable: true
       aws-iam-role-to-assume: 'arn:aws:iam::511903394050:role/milab-euce1-prod-github-oidc-role-pl-registry'
 
     secrets:
