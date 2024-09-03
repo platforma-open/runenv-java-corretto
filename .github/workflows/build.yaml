@@ -38,6 +38,7 @@ jobs:
       publish-script-name: 'release'
 
       aws-publish-enable: true
+      gcloud-kms-sign-enable: true
       aws-iam-role-to-assume: 'arn:aws:iam::511903394050:role/milab-euce1-prod-github-oidc-role-pl-registry'
 
     secrets:
