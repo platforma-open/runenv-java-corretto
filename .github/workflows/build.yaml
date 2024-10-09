@@ -4,9 +4,9 @@ on:
     types: [opened, reopened, synchronize]
     branches:
       - 'main'
-  # push:
-  #   branches:
-  #     - 'main'
+  push:
+    branches:
+      - 'main'
 
 jobs:
   init:
@@ -20,7 +20,7 @@ jobs:
     needs:
       - init
 
-    uses: milaboratory/github-ci/.github/workflows/node-simple.yaml@v4-beta
+    uses: milaboratory/github-ci/.github/workflows/node-simple.yaml@v4
     with:
       app-name: Amazon Corretto JAVA PL package
       app-name-slug: 'corretto-jdk'
