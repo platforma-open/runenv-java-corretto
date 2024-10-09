@@ -11,10 +11,12 @@ produce newer software descriptors in this package.
 
 ## How to release new version of corretto run environment
 
-1. Render environment descriptor for new version of corretto and check it can be downloaded and repacked:
+1. Update `package.json`:
+   1. Add new entrypoint for fresh version of java.
+   2. Change version of java built by default in CI (`pkg:build` and `publish:packages` scripts).
+2. Run build script to check packages and descriptors are built normally
   ```bash
-  npm run pkg:build <corretto version> # e.g. npm run pkg:build 21.0.2.13.1
+  npm run pkg:build
   ```
-2. Commit the descriptor generated in `dist` directory
-3. Update `package.json`, changing target version in `release:packages` script
-4. Bump `<minor>` version part in `package.json`
+1. Commit new descriptor generated in `dist` directory.
+2. Bump `<minor>` version part in `package.json`.
