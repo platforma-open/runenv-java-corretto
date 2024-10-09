@@ -22,6 +22,9 @@ fi
 #
 version="${1}"
 
+pl-pkg build descriptors \
+    --package-id="${version}"
+
 ./21.x/pkg-download.sh "${version}" macosx x64
 ./21.x/pkg-download.sh "${version}" macosx aarch64
 ./21.x/pkg-download.sh "${version}" linux x64
@@ -31,6 +34,3 @@ version="${1}"
 pl-pkg build packages \
     --package-id="${version}" \
     --all-platforms
-
-pl-pkg build descriptors \
-    --package-id="${version}"

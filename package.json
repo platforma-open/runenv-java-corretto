@@ -1,5 +1,5 @@
 {
-  "name": "@milaboratory/runenv-java-corretto",
+  "name": "@platforma-open/milaboratories.runenv-java-corretto",
   "version": "1.0.0",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
@@ -13,34 +13,29 @@
     "dist/"
   ],
   "block-software": {
-    "registries": {
-      "binary": {
-        "milaboratories": { "storageURL": "s3://milab-euce1-prod-pkgs-s3-platforma-registry/pub/?region=eu-central-1" }
-      }
-    },
     "entrypoints": {
       "21.0.2.13.1": {
-          "environment": {
-              "artifact": {
-                  "type": "environment",
-                  "runtime": "java",
-                  "registry": "milaboratories",
-                  "version": "21.0.2.13.1",
-                  "roots": {
-                    "linux-x64": "./dld/corretto-21.0.2.13.1-linux-x64",
-                    "linux-aarch64": "./dld/corretto-21.0.2.13.1-linux-aarch64",
-                    "macosx-x64": "./dld/corretto-21.0.2.13.1-macosx-x64",
-                    "macosx-aarch64": "./dld/corretto-21.0.2.13.1-macosx-aarch64",
-                    "windows-x64": "./dld/corretto-21.0.2.13.1-windows-x64"
-                  },
-                  "binDir": "bin"
-              }
+        "environment": {
+          "artifact": {
+            "type": "environment",
+            "runtime": "java",
+            "registry": "platforma-open",
+            "version": "21.0.2.13.1",
+            "roots": {
+              "linux-x64": "./dld/corretto-21.0.2.13.1-linux-x64",
+              "linux-aarch64": "./dld/corretto-21.0.2.13.1-linux-aarch64",
+              "macosx-x64": "./dld/corretto-21.0.2.13.1-macosx-x64",
+              "macosx-aarch64": "./dld/corretto-21.0.2.13.1-macosx-aarch64",
+              "windows-x64": "./dld/corretto-21.0.2.13.1-windows-x64"
+            },
+            "binDir": "bin"
           }
+        }
       }
     }
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@milaboratory/pl-package-builder": "^2.8.0"
+    "@platforma-sdk/package-builder": "^2.9.2"
   }
 }
