@@ -20,7 +20,7 @@ jobs:
     needs:
       - init
 
-    uses: milaboratory/github-ci/.github/workflows/node-simple.yaml@v4-beta
+    uses: milaboratory/github-ci/.github/workflows/node-simple.yaml@v4-merge-09-10-2024
     with:
       app-name: Amazon Corretto JAVA PL package
       app-name-slug: 'corretto-jdk'
