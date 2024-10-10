@@ -35,7 +35,6 @@ jobs:
       test: false
       test-script-name: 'test'
 
-      publish-script-name: 'release'
       publish-to-public: true
 
       aws-login-enable: true
