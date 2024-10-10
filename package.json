@@ -5,9 +5,9 @@
   "scripts": {
     "build": "true",
     "pkg:build": "rm -rf dld && ./scripts/build.sh 21.0.2.13.1",
-    "publish:packages": "./scripts/publish.sh 21.0.2.13.1",
+    "pkg:publish": "./scripts/publish.sh 21.0.2.13.1",
 
-    "prepublishOnly": "npm run pkg:build && npm run publish:packages"
+    "prepublishOnly": "npm run pkg:build && npm run pkg:publish"
   },
   "files": [
     "dist/"
