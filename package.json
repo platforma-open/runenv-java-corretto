@@ -6,8 +6,8 @@
     "build": "true",
     "pkg:build": "rm -rf dld && ./scripts/build.sh 21.0.2.13.1",
     "publish:packages": "./scripts/publish.sh 21.0.2.13.1",
-    "publish:descriptors": "pl-pkg publish descriptors",
-    "release": "npm run pkg:build && npm run publish:packages && npm run publish:descriptors"
+
+    "prepublishOnly": "npm run pkg:build && npm run publish:packages"
   },
   "files": [
     "dist/"
