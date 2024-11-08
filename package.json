@@ -32,7 +32,7 @@
           }
         }
       },
-      "21.0.2.13.1-debug": {
+      "21.0.2.13.1-flags": {
         "binary": {
           "artifact": {
             "registry": "platforma-open",

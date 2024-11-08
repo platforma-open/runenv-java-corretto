@@ -33,4 +33,5 @@ pl-pkg build descriptors \
 
 pl-pkg build packages \
     --package-id="${version}" \
+    --package-id="${version}-flags" \
     --all-platforms
