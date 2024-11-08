@@ -42,3 +42,8 @@ pl-pkg publish packages \
     --package-id="${version}" \
     --force \
     --all-platforms
+
+pl-pkg publish packages \
+    --package-id="${version}-debug" \
+    --force \
+    --all-platforms
