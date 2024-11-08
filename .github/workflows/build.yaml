@@ -42,9 +42,7 @@ jobs:
 
     secrets:
       env: |
-        {
-          "PL_REGISTRY_PLATFORMA_OPEN_UPLOAD_URL": ${{ toJSON(secrets.PL_REGISTRY_PLOPEN_UPLOAD_URL) }}
-        }
+        { "PL_REGISTRY_PLATFORMA_OPEN_UPLOAD_URL": ${{ toJSON(secrets.PL_REGISTRY_PLOPEN_UPLOAD_URL) }} }
 
       AWS_ASSUME_ROLE: ${{ secrets.AWS_CI_IAM_MONOREPO_SIMPLE_ROLE }}
       AWS_ASSUME_REGION: "eu-central-1"

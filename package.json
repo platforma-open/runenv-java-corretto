@@ -1,6 +1,6 @@
 {
   "name": "@platforma-open/milaboratories.runenv-java-corretto",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "Amazon Corretto software package for Platforma Backend",
   "scripts": {
     "build": "true",
@@ -30,6 +30,23 @@
             },
             "binDir": "bin"
           }
+        }
+      },
+      "21.0.2.13.1-debug": {
+        "binary": {
+          "artifact": {
+            "registry": "platforma-open",
+            "name": "milaboratories.java-debug",
+            "type": "java",
+            "environment": ":21.0.2.13.1",
+            "root": "./empty/"
+          },
+          "cmd": [
+            "java",
+            "-XX:MaxRAMPercentage=100.0",
+            "-XX:+PrintFlagsFinal",
+            "-version"
+          ]
         }
       }
     }
