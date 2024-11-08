@@ -38,6 +38,7 @@ pl-pkg sign packages \
     --all-platforms \
     --sign-command='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
 
+pl-pkg build descriptors --package-id="${version}-flags"
 pl-pkg publish packages \
     --package-id="${version}" \
     --package-id="${version}-flags" \
