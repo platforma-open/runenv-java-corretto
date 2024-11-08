@@ -40,10 +40,6 @@ pl-pkg sign packages \
 
 pl-pkg publish packages \
     --package-id="${version}" \
-    --force \
-    --all-platforms
-
-pl-pkg publish packages \
-    --package-id="${version}-debug" \
-    --force \
+    --package-id="${version}-flags" \
+    --skip-existing-packages \
     --all-platforms

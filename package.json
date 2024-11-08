@@ -32,11 +32,11 @@
           }
         }
       },
-      "21.0.2.13.1-debug": {
+      "21.0.2.13.1-flags": {
         "binary": {
           "artifact": {
             "registry": "platforma-open",
-            "name": "milaboratories.java-debug",
+            "name": "platforma-open/milaboratories.runenv-java-corretto-flags",
             "type": "java",
             "environment": ":21.0.2.13.1",
             "root": "./empty/"
