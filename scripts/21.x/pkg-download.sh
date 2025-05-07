@@ -48,6 +48,19 @@ function log() {
     printf "%s\n" "${*}"
 }
 
+function copy_fonts() {
+    local _target_dir="${1}"
+    local _fonts_dir="${_target_dir}/lib/fonts"
+    local _lib_dir="${_target_dir}/lib"
+    
+    log "Copying fonts to '${_fonts_dir}'"
+    mkdir -p "${_fonts_dir}"
+    cp -f "${script_dir}/../../fonts/"*.ttf "${_fonts_dir}/"
+    
+    log "Copying fontconfig.properties to '${_lib_dir}'"
+    cp -f "${script_dir}/../../fontconfig.properties" "${_lib_dir}/"
+}
+
 function download() {
     local _ext="tar.gz"
     local _suffix=""
@@ -92,6 +105,8 @@ function unpack_linux() {
         --file "${dst_archive_path}" \
         --strip-components 1 \
         "amazon-corretto-${version}-${os}-${arch}"
+    
+    copy_fonts "${dst_data_dir}"
 }
 
 function unpack_osx() {
@@ -105,6 +120,8 @@ function unpack_osx() {
         --file "${dst_archive_path}" \
         --strip-components 3 \
         "amazon-corretto-21.jdk/Contents/Home/"
+    
+    copy_fonts "${dst_data_dir}"
 }
 
 function unpack_windows() {
@@ -120,6 +137,8 @@ function unpack_windows() {
 
     rm -rf "${dst_data_dir}"
     mv "${_dir_name}/" "${dst_data_dir}"
+    
+    copy_fonts "${dst_data_dir}"
 }
 
 mkdir -p "${dst_root}"
