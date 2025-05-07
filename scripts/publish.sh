@@ -42,5 +42,5 @@ pl-pkg build descriptors --package-id="${version}-flags"
 pl-pkg publish packages \
     --package-id="${version}" \
     --package-id="${version}-flags" \
-    --skip-existing-packages \
+    --fail-existing-packages \
     --all-platforms
