@@ -55,10 +55,10 @@ function copy_fonts() {
     
     log "Copying fonts to '${_fonts_dir}'"
     mkdir -p "${_fonts_dir}"
-    cp -f "${script_dir}/../../fonts/"*.ttf "${_fonts_dir}/"
+    cp -f "${script_dir}/../fonts/"*.ttf "${_fonts_dir}/"
     
     log "Copying fontconfig.properties to '${_lib_dir}'"
-    cp -f "${script_dir}/../../fontconfig.properties" "${_lib_dir}/"
+    cp -f "${script_dir}/../fontconfig.properties" "${_lib_dir}/"
 }
 
 function download() {

@@ -4,3 +4,8 @@
 /*.tar.gz
 /*.zip
 /java/
+package.sw.json
+build/
+dist/
+test-dry-run.json
+.turbo

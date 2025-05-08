@@ -1,0 +1,9 @@
+packages:
+  - java-21.0.7.6.1
+  - java-21.0.2.13.1
+  - catalogue
+
+catalog:
+  'turbo': ^2.5.3
+  '@changesets/cli': ^2.29.3
+  "@platforma-sdk/package-builder": 2.14.2

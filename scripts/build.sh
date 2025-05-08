@@ -22,16 +22,12 @@ fi
 #
 version="${1}"
 
-pl-pkg build descriptors \
-    --package-id="${version}"
+pl-pkg build descriptors
 
-./21.x/pkg-download.sh "${version}" macosx x64
-./21.x/pkg-download.sh "${version}" macosx aarch64
-./21.x/pkg-download.sh "${version}" linux x64
-./21.x/pkg-download.sh "${version}" linux aarch64
-./21.x/pkg-download.sh "${version}" windows x64
+./download.sh "${version}" macosx x64
+./download.sh "${version}" macosx aarch64
+./download.sh "${version}" linux x64
+./download.sh "${version}" linux aarch64
+./download.sh "${version}" windows x64
 
-pl-pkg build packages \
-    --package-id="${version}" \
-    --package-id="${version}-flags" \
-    --all-platforms
+pl-pkg build packages --all-platforms
