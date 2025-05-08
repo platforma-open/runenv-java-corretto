@@ -7,7 +7,6 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}/../../"
 
 base_url="https://corretto.aws/downloads/resources"
 

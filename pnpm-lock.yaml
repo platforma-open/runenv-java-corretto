@@ -10,8 +10,8 @@ catalogs:
       specifier: ^2.29.3
       version: 2.29.3
     '@platforma-sdk/package-builder':
-      specifier: 2.14.2
-      version: 2.14.2
+      specifier: 2.15.6
+      version: 2.15.6
     turbo:
       specifier: ^2.5.3
       version: 2.5.3
@@ -38,19 +38,19 @@ importers:
     devDependencies:
       '@platforma-sdk/package-builder':
         specifier: 'catalog:'
-        version: 2.14.2
+        version: 2.15.6
 
   java-21.0.2.13.1:
     devDependencies:
       '@platforma-sdk/package-builder':
         specifier: 'catalog:'
-        version: 2.14.2
+        version: 2.15.6
 
   java-21.0.7.6.1:
     devDependencies:
       '@platforma-sdk/package-builder':
         specifier: 'catalog:'
-        version: 2.14.2
+        version: 2.15.6
 
 packages:
 
@@ -306,8 +306,8 @@ packages:
     resolution: {integrity: sha512-lIzHY+JMP6evrS5E/sGijNnwrCoNtGy8703jWXcMuPOYKiFhWoAqnIm1BGgoRgmxczkbSfRsHUL/lwsSgh74Lw==}
     engines: {node: '>=18.0.0'}
 
-  '@platforma-sdk/package-builder@2.14.2':
-    resolution: {integrity: sha512-//N+bIM423gq8loTxgVk1AskZaVMWCM/d8ZEKeb/gzzCazGQUZiDGKfjP4XCAudc3o3ltjsVdpoKEZqTjYuhrA==}
+  '@platforma-sdk/package-builder@2.15.6':
+    resolution: {integrity: sha512-myp5TLKufmPeXckYG3HAUNfaE8+qTknogSjtISjoBof6KTDQTHy4oxBx7//Efq7wXJaFC0qDQh8tP6UGzqCU3A==}
     hasBin: true
 
   '@smithy/abort-controller@4.0.2':
@@ -1828,7 +1828,7 @@ snapshots:
       wordwrap: 1.0.0
       wrap-ansi: 7.0.0
 
-  '@platforma-sdk/package-builder@2.14.2':
+  '@platforma-sdk/package-builder@2.15.6':
     dependencies:
       '@aws-sdk/client-s3': 3.775.0
       '@aws-sdk/lib-storage': 3.775.0(@aws-sdk/client-s3@3.775.0)

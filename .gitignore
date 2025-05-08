@@ -1,4 +1,4 @@
-/node_modules/
+node_modules/
 /dld/
 /*.tgz
 /*.tar.gz

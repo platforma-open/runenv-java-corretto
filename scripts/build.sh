@@ -7,7 +7,6 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
 
 if [ "$#" -ne 1 ]; then
     echo ""
@@ -24,10 +23,10 @@ version="${1}"
 
 pl-pkg build descriptors
 
-./download.sh "${version}" macosx x64
-./download.sh "${version}" macosx aarch64
-./download.sh "${version}" linux x64
-./download.sh "${version}" linux aarch64
-./download.sh "${version}" windows x64
+"${script_dir}/download.sh" "${version}" macosx x64
+"${script_dir}/download.sh" "${version}" macosx aarch64
+"${script_dir}/download.sh" "${version}" linux x64
+"${script_dir}/download.sh" "${version}" linux aarch64
+"${script_dir}/download.sh" "${version}" windows x64
 
 pl-pkg build packages --all-platforms
