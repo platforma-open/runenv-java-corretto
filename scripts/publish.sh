@@ -7,8 +7,8 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
 
+<<<<<<< HEAD
 if [ "$#" -ne 1 ]; then
     echo ""
     echo "Usage: '${0}' <version>"
@@ -21,26 +21,10 @@ fi
 # Script parameters
 #
 version="${1}"
+version_dir="java-${version}"
 
-if ! [ -f "../dist/tengo/software/${version}.sw.json" ]; then
-    echo ""
-    echo "No software descriptor found at 'dist/tengo/software/${version}.sw.json'."
-    echo ""
-    echo "Looks like you're going to publish new version of amazon corretto java distribution."
-    echo "See README.md for the instructions on how to do this properly."
-    echo ""
+# Change to version-specific directory
+cd "${version_dir}"
 
-    exit 1
-fi
-
-pl-pkg sign packages \
-    --package-id="${version}" \
-    --all-platforms \
-    --sign-command='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
-
-pl-pkg build descriptors --package-id="${version}-flags"
-pl-pkg publish packages \
-    --package-id="${version}" \
-    --package-id="${version}-flags" \
-    --fail-existing-packages \
-    --all-platforms
+#pl-pkg sign packages --all-platforms --sign-command='["gcloud-kms-sign", "{pkg}", "{pkg}.sig"]'
+pl-pkg publish packages --all-platforms --fail-existing-packages

@@ -7,7 +7,7 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}/../../"
+repo_root="$(cd "${script_dir}/../../" && pwd)"  # Get absolute path to runenv-java-corretto root
 
 base_url="https://corretto.aws/downloads/resources"
 
@@ -34,8 +34,9 @@ fi
 version="${1}"
 os="${2}"
 arch="${3}"
+version_dir="${repo_root}/java-${version}"
 dst_root="dld"
-dst_data_dir="${dst_root}/corretto-${version}-${os}-${arch}"
+dst_data_dir="${dst_root}/corretto-${os}-${arch}"
 
 dst_archive_ext="tar.gz"
 if [ "${os}" == "windows" ]; then
@@ -55,10 +56,10 @@ function copy_fonts() {
     
     log "Copying fonts to '${_fonts_dir}'"
     mkdir -p "${_fonts_dir}"
-    cp -f "${script_dir}/../../fonts/"*.ttf "${_fonts_dir}/"
+    cp -f "${repo_root}/common/fonts/"*.ttf "${_fonts_dir}/"
     
     log "Copying fontconfig.properties to '${_lib_dir}'"
-    cp -f "${script_dir}/../../fontconfig.properties" "${_lib_dir}/"
+    cp -f "${repo_root}/common/fontconfig.properties" "${_lib_dir}/"
 }
 
 function download() {
@@ -71,13 +72,8 @@ function download() {
 
     local _url="${base_url}/${version}/amazon-corretto-${version}-${os}-${arch}${_suffix}.${_ext}"
 
-    local _show_progress=("--show-progress")
-    if [ "${CI:-}" = "true" ]; then
-        _show_progress=()
-    fi
-
     log "Downloading '${_url}'"
-    wget --quiet "${_show_progress[@]}" --output-document="${dst_archive_path}" "${_url}"
+    wget -nv --output-document="${dst_archive_path}" "${_url}"
 }
 
 function unpack() {
@@ -98,7 +94,7 @@ function unpack_linux() {
     log "Unpacking archive for Linux to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
-    mkdir "${dst_data_dir}"
+    mkdir -p "${dst_data_dir}"
 
     tar -x \
         -C "${dst_data_dir}" \
@@ -113,7 +109,7 @@ function unpack_osx() {
     log "Unpacking archive for Mac OS X to '${dst_data_dir}'"
     
     rm -rf "${dst_data_dir}"
-    mkdir "${dst_data_dir}"
+    mkdir -p "${dst_data_dir}"
 
     tar -x \
         -C "${dst_data_dir}" \
@@ -141,6 +137,8 @@ function unpack_windows() {
     copy_fonts "${dst_data_dir}"
 }
 
+cd "${version_dir}"
+
 mkdir -p "${dst_root}"
 download
-unpack
+unpack 
