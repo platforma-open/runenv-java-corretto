@@ -7,6 +7,7 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
+repo_root="$(cd "${script_dir}/../" && pwd)"  # Get absolute path to repo root
 
 if [ "$#" -ne 1 ]; then
     echo ""
@@ -20,7 +21,7 @@ fi
 # Script parameters
 #
 version="${1}"
-version_dir="java-${version}"
+version_dir="${repo_root}/java-${version}"
 
 # Change to version-specific directory
 cd "${version_dir}"
