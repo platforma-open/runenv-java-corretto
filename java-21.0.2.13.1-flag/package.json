@@ -4,7 +4,7 @@
   "description": "Amazon Corretto 21.0.2.13.1 Flag software package for Platforma Backend",
   "scripts": {
     "cleanup": "rm -rf ./pkg-*.tgz && rm -rf ./dld && rm -rf ./dist/",
-    "build": "pl-pkg build",
+    "build": "mkdir -p empty && pl-pkg build",
     "prepublishOnly": "pl-pkg publish --all-platforms"
   },
   "files": [
