@@ -1,0 +1,38 @@
+{
+  "name": "@platforma-open/milaboratories.runenv-java-corretto.java-21.0.2.13.1-flag",
+  "version": "1.0.0",
+  "description": "Amazon Corretto 21.0.2.13.1 Flag software package for Platforma Backend",
+  "scripts": {
+    "cleanup": "rm -rf ./pkg-*.tgz && rm -rf ./dld && rm -rf ./dist/",
+    "build": "pl-pkg build",
+    "prepublishOnly": "pl-pkg publish --all-platforms"
+  },
+  "files": [
+    "dist/"
+  ],
+  "block-software": {
+    "entrypoints": {
+      "main-flags": {
+        "binary": {
+          "artifact": {
+            "registry": "platforma-open",
+            "type": "java",
+            "environment": "@platforma-open/milaboratories.runenv-java-corretto.java-21.0.2.13.1:main",
+            "root": "./empty/"
+          },
+          "cmd": [
+            "java",
+            "-XX:MaxRAMPercentage=100.0",
+            "-XX:+PrintFlagsFinal",
+            "-version"
+          ]
+        }
+      }
+    }
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@platforma-open/milaboratories.runenv-java-corretto.java-21.0.2.13.1": "workspace:",
+    "@platforma-sdk/package-builder": "catalog:"
+  }
+}

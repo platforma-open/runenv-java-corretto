@@ -1,6 +1,20 @@
-/node_modules/
-/dld/
-/*.tgz
-/*.tar.gz
-/*.zip
-/java/
+# Node modules
+node_modules/
+**/node_modules/
+**/*/node_modules/
+catalogue/node_modules/
+
+# Build artifacts
+**/*/dld/
+**/*.tgz
+**/*.tar.gz
+**/*.zip
+**/*/java/
+**/*/package.sw.json
+build/
+dist/
+
+# Test and cache
+test-dry-run.json
+.turbo
+.cache/

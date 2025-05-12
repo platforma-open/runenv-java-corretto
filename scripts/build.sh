@@ -7,7 +7,7 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
+#cd "${script_dir}"
 
 if [ "$#" -ne 1 ]; then
     echo ""
@@ -21,17 +21,22 @@ fi
 # Script parameters
 #
 version="${1}"
+version_dir="java-${version}"
+main_version="${version%%.*}"  # Extract main version (e.g., 21 from 21.0.2.13.1)
 
-pl-pkg build descriptors \
-    --package-id="${version}"
+# Create version-specific directory if it doesn't exist
+mkdir -p "${version_dir}"
+cd "${version_dir}"
 
-./21.x/pkg-download.sh "${version}" macosx x64
-./21.x/pkg-download.sh "${version}" macosx aarch64
-./21.x/pkg-download.sh "${version}" linux x64
-./21.x/pkg-download.sh "${version}" linux aarch64
-./21.x/pkg-download.sh "${version}" windows x64
+# Create dld directory inside version directory
+#mkdir -p "dld"
 
-pl-pkg build packages \
-    --package-id="${version}" \
-    --package-id="${version}-flags" \
-    --all-platforms
+pl-pkg build descriptors
+
+"${script_dir}/${main_version}.x/pkg-download.sh" "${version}" macosx x64
+"${script_dir}/${main_version}.x/pkg-download.sh" "${version}" macosx aarch64
+"${script_dir}/${main_version}.x/pkg-download.sh" "${version}" linux x64
+"${script_dir}/${main_version}.x/pkg-download.sh" "${version}" linux aarch64
+"${script_dir}/${main_version}.x/pkg-download.sh" "${version}" windows x64
+
+pl-pkg build --all-platforms
