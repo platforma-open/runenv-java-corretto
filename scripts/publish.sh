@@ -8,7 +8,6 @@ set -o nounset
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
 
-<<<<<<< HEAD
 if [ "$#" -ne 1 ]; then
     echo ""
     echo "Usage: '${0}' <version>"
