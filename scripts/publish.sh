@@ -7,8 +7,8 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-cd "${script_dir}"
 
+<<<<<<< HEAD
 if [ "$#" -ne 1 ]; then
     echo ""
     echo "Usage: '${0}' <version>"

@@ -7,7 +7,7 @@ set -o nounset
 # Script state init
 #
 script_dir="$(cd "$(dirname "${0}")" && pwd)"
-repo_root="$(cd "${script_dir}/../../" && pwd)"  # Get absolute path to repo root
+repo_root="$(cd "${script_dir}/../../" && pwd)"  # Get absolute path to runenv-java-corretto root
 
 base_url="https://corretto.aws/downloads/resources"
 
@@ -35,8 +35,8 @@ version="${1}"
 os="${2}"
 arch="${3}"
 version_dir="${repo_root}/java-${version}"
-dst_root="${version_dir}/dld"
-dst_data_dir="${dst_root}/corretto-${os}-${arch}"
+dst_root="dld"
+dst_data_dir="${dst_root}/corretto-${version}-${os}-${arch}"
 
 dst_archive_ext="tar.gz"
 if [ "${os}" == "windows" ]; then
@@ -136,6 +136,10 @@ function unpack_windows() {
     
     copy_fonts "${dst_data_dir}"
 }
+
+# Create version directory and change to it
+mkdir -p "${version_dir}"
+cd "${version_dir}"
 
 mkdir -p "${dst_root}"
 download

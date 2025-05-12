@@ -3,7 +3,6 @@ node_modules/
 **/node_modules/
 **/*/node_modules/
 catalogue/node_modules/
-
 # Build artifacts
 **/*/dld/
 **/*.tgz
@@ -13,7 +12,6 @@ catalogue/node_modules/
 **/*/package.sw.json
 build/
 dist/
-
 # Test and cache
 test-dry-run.json
 .turbo
