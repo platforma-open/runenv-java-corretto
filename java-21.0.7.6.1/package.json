@@ -5,7 +5,7 @@
   "scripts": {
     "cleanup": "rm -rf ./pkg-*.tgz && rm -rf ./dld && rm -rf ./dist/",
     "build": "../scripts/build.sh 21.0.7.6.1",
-    "prepublishOnly": "../scripts/publish.sh 21.0.7.6.1"
+    "prepublishOnly": "pl-pkg publish packages --all-platforms --force --log-level=debug"
   },
   "files": [
     "dist/"
